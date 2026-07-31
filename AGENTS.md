@@ -1,4 +1,4 @@
-# AGENTS.md — 每日 IT 新聞摘要自動化指令
+# AGENTS.md — 每日 Web 前端新聞摘要自動化指令
 
 這份文件是本 repo 的**唯一事實來源**。任何 AI agent（不限廠商）只要具備下方「必要能力」，
 讀完這份文件就能獨立重現「讀偏好 → 選文 → 開 PR → 回饋寫回」的完整流程，不需要額外背景知識。
@@ -29,10 +29,10 @@
 
 | 類別 | 數量 | 說明 |
 |---|---|---|
-| 工程知識 / 教學型 | 5 | 有教育性、值得學習的內容：好用工具/函式庫/技巧、原理科普（「這個東西怎麼運作」）、best practice、深入淺出的技術解析。不是單純新聞快訊。 |
-| 知名工程師個人部落格近期文章 | 1–2 | 例如 Simon Willison、Julia Evans、Dan Abramov、Martin Fowler、Charity Majors、Kent Beck、Werner Vogels、Armin Ronacher、Dan Luu、antirez、fasterthanlime。挑近期有更新的即可，不用每個都查。`preferences.md` 裡若有使用者特別喜歡的工程師/部落格，優先納入。 |
-| GitHub Trending 熱門 repo | 1–2 | 近期 star 數明顯上升、跟後端/AI/工具鏈相關。避免純娛樂/跟工程無關的 repo。 |
-| 工作技術棧 + 更廣泛後端主題（合併同一桶） | 剩餘名額 | 這兩個子領域**共用**剩餘名額，不需要在兩者之間平均分配，依當天實際找到的內容比例分配即可：工作技術棧＝Kotlin/Java（後端）、AWS/AWS CDK（IaC）、OpenAPI/Swagger；更廣泛後端主題＝AI/LLM 工程應用、資料庫（DB）、分散式系統/系統設計/架構、綜合 IT 新聞熱門話題。 |
+| 工程知識 / 教學型 | 5 | 有教育性、值得學習的內容：好用的前端工具/函式庫/技巧、瀏覽器原理科普（例如 rendering pipeline、event loop、CSS layout/layer 演算法）、best practice、深入淺出的技術解析。不是單純新聞快訊。 |
+| 知名前端工程師個人部落格近期文章 | 1–2 | 例如 Dan Abramov、Kent C. Dodds、Josh W. Comeau、Rich Harris（Svelte）、Evan You（Vue）、Lea Verou、Addy Osmani、Sarah Drasner、Cassidy Williams。挑近期有更新的即可，不用每個都查。`preferences.md` 裡若有使用者特別喜歡的工程師/部落格，優先納入。 |
+| GitHub Trending 熱門 repo | 1–2 | 近期 star 數明顯上升、跟前端/Web/開發工具鏈（框架、建置工具、UI library、DX 工具）相關。避免純娛樂/跟工程無關的 repo。 |
+| 前端技術棧 + 更廣泛 Web 平台主題（合併同一桶） | 剩餘名額 | 這兩個子領域**共用**剩餘名額，不需要在兩者之間平均分配，依當天實際找到的內容比例分配即可：前端技術棧＝React/Next.js、Vue/Nuxt、TypeScript、Vite/Webpack/Turbopack 等建置工具、狀態管理（Redux/Zustand/Signals）；更廣泛 Web 平台主題＝瀏覽器新 API/CSS 新特性、效能與 Web Vitals、無障礙（a11y）、design system、AI 輔助前端開發工具、測試（Vitest/Playwright）。 |
 
 ## Step 2：優先來源清單（先查這些，開放搜尋是備援）
 
@@ -44,12 +44,13 @@
 優先信任這份清單。
 
 - Hacker News（news.ycombinator.com）
-- InfoQ
-- AWS What's New / AWS Blog
-- Postgres Weekly
-- High Scalability
-- The Pragmatic Engineer
-- Latent Space
+- CSS-Tricks
+- Smashing Magazine
+- web.dev / Chrome for Developers
+- JavaScript Weekly
+- Frontend Focus
+- React Status
+- MDN Blog
 - `preferences.md` 裡使用者明確指定的其他來源（若有，優先度高於本清單）
 
 ## Step 3：禁止主題 / 內容型態
@@ -97,11 +98,11 @@
 以當天日期（`YYYY-MM-DD`，使用者本地時區）為準，寫入 `digests/YYYY-MM-DD.md`，格式固定如下,
 不要自行更改結構：
 
-- 檔案開頭：`# IT 新聞日報 YYYY-MM-DD（週X）`，接一段簡短的主題分布總覽。
+- 檔案開頭：`# Web 前端新聞日報 YYYY-MM-DD（週X）`，接一段簡短的主題分布總覽。
 - 依 Step 1 的類別分組，每則包含：
   - 編號
-  - 主題標籤（如 `[工程知識]`、`[Blog]`、`[GitHub Trending]`、`[AI]`、`[DB]`、`[AWS]` 等，
-    可疊加多個標籤）
+  - 主題標籤（如 `[工程知識]`、`[Blog]`、`[GitHub Trending]`、`[React]`、`[CSS]`、`[Perf]`、
+    `[a11y]` 等，可疊加多個標籤）
   - 標題（粗體）
   - 一句話摘要，說明為何值得看
   - 來源名稱與連結（必須是 Step 5 檢查過的具體文章/repo 連結）
@@ -113,7 +114,7 @@
 1. 檢查 `digest-YYYY-MM-DD` 這個分支名今天是否已經存在（代表今天已經有人跑過一次）。若已存在，
    改用 `digest-YYYY-MM-DD-2`、`-3`……依序遞增，**不要**覆蓋既有分支或既有 PR。
 2. 從 `main` 建立分支，寫入 `digests/YYYY-MM-DD.md`。
-3. 開一個 PR：head 為上一步的分支，base 為 `main`，title 例如「IT 新聞日報 YYYY-MM-DD」，
+3. 開一個 PR：head 為上一步的分支，base 為 `main`，title 例如「Web 前端新聞日報 YYYY-MM-DD」，
    body 簡述本次涵蓋的主題分布（含每則的類別/來源追溯，見 Step 5）。
 4. **不要自動 merge** 這個 PR，留給使用者自己決定要不要合併。
 

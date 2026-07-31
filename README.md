@@ -1,6 +1,6 @@
 # learning_news
 
-每個平日早上自動蒐集的 IT / 後端相關新聞與資訊摘要，由排程 agent 產生並開 PR。
+每個平日早上自動蒐集的 Web 前端相關新聞與資訊摘要，由排程 agent 產生並開 PR。
 
 > 個人版本，參考自 [BillChai/learning_news](https://github.com/BillChai/learning_news)。
 
@@ -14,7 +14,7 @@
 ## 流程
 
 1. 讀取 `preferences.md` 了解目前偏好。
-2. 依 `AGENTS.md` 的規則搜尋近期 IT / 後端相關新聞，挑選 15 則，寫成 `digests/YYYY-MM-DD.md`。
+2. 依 `AGENTS.md` 的規則搜尋近期 Web 前端相關新聞，挑選 15 則，寫成 `digests/YYYY-MM-DD.md`。
 3. 開一個 PR（`digest-YYYY-MM-DD` -> `main`），內容為當天的摘要檔案。
 4. 使用者在對話中給回饋後，偏好會被追加寫入 `preferences.md`（同一個 PR 或後續 commit）。
 5. 使用者自行決定是否 merge 該 PR。
