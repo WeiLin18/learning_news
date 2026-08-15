@@ -1,6 +1,6 @@
 # learning_news
 
-每個平日早上自動蒐集的 Web 前端相關新聞與資訊摘要，由排程 agent 產生並開 PR。
+每隔約兩天蒐集一次的 Web 前端相關新聞與資訊摘要（一週約 3–4 次），由 agent 產生並開 PR。
 
 > 個人版本，參考自 [BillChai/learning_news](https://github.com/BillChai/learning_news)。
 
@@ -8,7 +8,7 @@
 
 - `AGENTS.md` — 這個 repo 的**唯一事實來源**：完整的選文/開 PR 指令，廠商中立，任何具備網路
   搜尋與 GitHub 讀寫能力的 AI agent 都能照它獨立執行。
-- `digests/YYYY-MM-DD.md` — 每天的 15 則精選新聞/資訊摘要。
+- `digests/YYYY-MM-DD.md` — 每次的 8 則精選新聞/資訊摘要。
 - `deep-dives/YYYY-MM-DD-followups.md` — 針對日報中特定幾則的深入導讀（類比、程式碼範例、
   對照表、可照做步驟、跨則統整）。只在使用者主動追問時產生，不是每天都有。
 - `preferences.md` — 累積記錄使用者對過去內容的喜歡/不喜歡回饋，用來調整之後每次挑選的主題與來源權重。
@@ -18,7 +18,7 @@
 ## 流程
 
 1. 讀取 `preferences.md` 了解目前偏好。
-2. 依 `AGENTS.md` 的規則搜尋近期 Web 前端相關新聞，挑選 15 則，寫成 `digests/YYYY-MM-DD.md`。
+2. 依 `AGENTS.md` 的規則搜尋近期 Web 前端相關新聞，挑選 8 則，寫成 `digests/YYYY-MM-DD.md`。
 3. 開一個 PR（`digest-YYYY-MM-DD` -> `main`），內容為當天的摘要檔案。
 4. 使用者在對話中給回饋後，偏好會被追加寫入 `preferences.md`（同一個 PR 或後續 commit）。
 5. 使用者自行決定是否 merge 該 PR。
